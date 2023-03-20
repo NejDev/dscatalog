@@ -1,7 +1,7 @@
-package com.devsuperior.dscatalog.Resources;
+package com.devsuperior.dscatalog.controllers;
 
-import com.devsuperior.dscatalog.Entities.Category;
-import com.devsuperior.dscatalog.Services.CategoryService;
+import com.devsuperior.dscatalog.entities.Category;
+import com.devsuperior.dscatalog.services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/categories")
-public class CategoryResource {
+public class CategoryController {
 
 @Autowired
     private CategoryService service;
