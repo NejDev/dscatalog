@@ -16,28 +16,38 @@ import java.util.List;
 @RequestMapping(value = "/categories")
 public class CategoryController {
 
-@Autowired
+    @Autowired
     private CategoryService service;
 
     @GetMapping
-    public ResponseEntity<List<CategoryDTO>> findAll(){
+    public ResponseEntity<List<CategoryDTO>> findAll() {
         List<CategoryDTO> list = service.findAll();
         return ResponseEntity.ok().body(list);
     }
-   @GetMapping(value = "/{id}")
-    public ResponseEntity<CategoryDTO> findbyId(@PathVariable Long id){
-       CategoryDTO dto = service.findbyId(id);
-       return ResponseEntity.ok().body(dto);
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<CategoryDTO> findbyId(@PathVariable Long id) {
+        CategoryDTO dto = service.findbyId(id);
+        return ResponseEntity.ok().body(dto);
     }
-@PostMapping
-    public ResponseEntity<CategoryDTO> insert(@RequestBody CategoryDTO dto){
+
+    @PostMapping
+    public ResponseEntity<CategoryDTO> insert(@RequestBody CategoryDTO dto) {
         dto = service.insert(dto);
-    URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-            .buildAndExpand(dto.getId()).toUri();
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+                .buildAndExpand(dto.getId()).toUri();
 
         return ResponseEntity.created(uri).body(dto);
 
     }
 
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<CategoryDTO> update(@PathVariable Long id, @RequestBody CategoryDTO dto) {
+        dto = service.update(id, dto);
+        return ResponseEntity.ok().body(dto);
+
+
+
+    }
 }
 
