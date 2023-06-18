@@ -2,7 +2,6 @@ package com.devsuperior.dscatalog.DTO;
 
 import com.devsuperior.dscatalog.entities.Category;
 import com.devsuperior.dscatalog.entities.Product;
-
 import javax.persistence.Column;
 import java.io.Serializable;
 import java.time.Instant;
